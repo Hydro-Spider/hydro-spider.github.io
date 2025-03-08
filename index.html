@@ -142,6 +142,40 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+
+
+        .pricing-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .pricing-table {
+            margin-top: 20px;
+            width: 60%;
+            border-collapse: collapse;
+            background: rgba(34, 34, 34, 0.9);
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .pricing-table th, .pricing-table td {
+            border: 1px solid #444;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .pricing-table th {
+            background: #333;
+            font-weight: bold;
+        }
+
+        .pricing-table tr:nth-child(even) {
+            background: #222;
+        }
     </style>
 </head>
 
@@ -183,6 +217,52 @@
             <p>We have our own social network to connect sellers and buyers.</p>
         </div>
     </div>
+
+    <div class="pricing-section">
+        <h2>Membership Plans</h2>
+        <table class="pricing-table">
+            <tr>
+                <th>Plan</th>
+                <th>Price</th>
+                <th>Return</th>
+                <th>Support</th>
+                <th>Limit</th>
+                <th>Benefits</th>
+            </tr>
+            <tr>
+                <td>Basic</td>
+                <td>$19.99/mo</td>
+                <td>30-day free return</td>
+                <td>24/7 Basic Support</td>
+                <td>Up to 10 buyers</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Pro</td>
+                <td>$39.99/mo</td>
+                <td>30-day free return</td>
+                <td>24/7 Support</td>
+                <td>Unlimited Buyers</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td>Enterprise</td>
+                <td>$79.99/mo</td>
+                <td>30-day free return</td>
+                <td>24/7 High-Priority Support</td>
+                <td>Unlimited Buyers</td>
+                <td>Free repair up to $500</td>
+            </tr>
+
+        </table>
+        <br/>
+        <p>a 30-day free trial of the basic plan is included on the hardware</p>
+        <p>The cost of the hardware is a one-time payment excluded from the membership plan</p>
+    </div>
+
+
+
+
     <script>
         const canvas = document.querySelector('.background');
         const ctx = canvas.getContext('2d');

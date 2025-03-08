@@ -50,11 +50,11 @@
 <body>
     <div class="container">
         <h2>Join the Waitlist</h2>
-        <form action="/submit" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
-            <select name="country" required>
+        <form id="waitlist-form">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <select id="country" required>
                 <option value="">Select Country</option>
                 <option value="USA">USA</option>
                 <option value="Canada">Canada</option>
@@ -65,5 +65,41 @@
             <button type="submit">Join Now</button>
         </form>
     </div>
+    
+    <script>
+        document.getElementById("waitlist-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let formData = {
+                Name: document.getElementById("fullName").value,
+                Email: document.getElementById("email").value,
+                Phone: document.getElementById("phone").value,
+                Country: document.getElementById("country").value
+            };
+            
+            fetch("https://api.jsonbin.io/v3/b/67cbc196acd3cb34a8f6f31e/latest", {
+                method: "GET",
+                headers: {
+                    "X-Access-Key": "$2a$10$lkkqgxix.ktwRp/zdDLR1.Rj7LtRt01.2Oy6LO566seAo1QsQGUdO"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                let existingData = data.record || [];
+                existingData.push(formData);
+                
+                return fetch("https://api.jsonbin.io/v3/b/67cbc196acd3cb34a8f6f31e", {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Access-Key": "$2a$10$lkkqgxix.ktwRp/zdDLR1.Rj7LtRt01.2Oy6LO566seAo1QsQGUdO"
+                    },
+                    body: JSON.stringify(existingData)
+                });
+            })
+            .then(() => alert("Successfully added to the waitlist!"))
+            .catch(error => alert("Error saving data: " + error));
+        });
+    </script>
 </body>
 </html>
